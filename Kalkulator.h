@@ -3,7 +3,7 @@
 #include "resource.h"
 #define MAX_DIGITS 15
 
-#define CALC_HEIGHT 300
+#define CALC_HEIGHT 310
 #define CALC_WIDTH 300
 
 #define ROW_GAP 10
@@ -11,11 +11,11 @@
 #define RESULT_X 1
 #define RESULT_Y 1
 #define RESULT_HEIGHT 50 
-#define RESULT_WIDTH 200
+#define RESULT_WIDTH 250
 
 #define BUTTON_ROW_X 50
 #define BUTTON_ROW_Y 55
-#define BUTTON_HEIGHT 42
+#define BUTTON_HEIGHT 45
 #define BUTTON_WIDTH 39
 
 #define IDC_STATIC_RESULT 101
