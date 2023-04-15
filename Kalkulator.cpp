@@ -355,10 +355,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         PostQuitMessage(0);
         break;
     case WM_HOTKEY:
-        if(wParam == IDM_A)
-            MessageBox(hwndStatic, (LPCSTR)"Przycisk A", (LPCSTR)"Przycisk A", MB_OK);
-        if(wParam == IDM_B)
-            MessageBox(hwndStatic, (LPCSTR)"Przycisk B", (LPCSTR)"Przycisk B", MB_OK);
+        if (wParam == IDM_A)
+            MessageBox(hwndStatic, (LPCSTR)"Kamil Rzezniczek", (LPCSTR)"Autorem programu jest:", MB_OK);
+
+        if (wParam == IDM_B)
+        {
+            Reset();
+            SetWindowText(hwndStatic, strValue);
+        }
     default:
         return DefWindowProc(hwnd, message, wParam, lParam);
     }
