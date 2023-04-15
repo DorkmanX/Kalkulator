@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "Kalkulator.h"
+#include <tchar.h>
 
 // Global vars
 const char g_szClassName[] = "MainWindowClass";
@@ -113,7 +114,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             WS_VISIBLE | WS_CHILD | SS_RIGHT,
             RESULT_X + ROW_GAP, RESULT_Y, RESULT_WIDTH, RESULT_HEIGHT,
             hwnd, (HMENU)IDC_STATIC_RESULT, GetModuleHandle(NULL), NULL);
+
         AddMenus(hwnd);
+        RegisterHotKey(hwnd, IDM_A, MOD_CONTROL, A_KEY);
+        RegisterHotKey(hwnd, IDM_B, MOD_CONTROL, B_KEY);
 
         CreateWindow(
             "BUTTON", "7",
@@ -350,6 +354,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
+    case WM_HOTKEY:
+        if(wParam == IDM_A)
+            MessageBox(hwndStatic, (LPCSTR)"Przycisk A", (LPCSTR)"Przycisk A", MB_OK);
+        if(wParam == IDM_B)
+            MessageBox(hwndStatic, (LPCSTR)"Przycisk B", (LPCSTR)"Przycisk B", MB_OK);
     default:
         return DefWindowProc(hwnd, message, wParam, lParam);
     }

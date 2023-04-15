@@ -46,4 +46,8 @@
 #define LEFT 1
 #define RIGHT 2
 
-#define IDM_ABOUT 1
+#define IDM_ABOUT 5
+#define IDM_A 6
+#define IDM_B 7
+#define A_KEY 0x41
+#define B_KEY 0x42
