@@ -66,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     hwnd = CreateWindowEx(
         WS_EX_CLIENTEDGE,
         g_szClassName,
-        "Calculator v. 1.0",
+        "Kalkulator",
         WS_OVERLAPPED | WS_MINIMIZEBOX | WS_SYSMENU,
         CW_USEDEFAULT, CW_USEDEFAULT, CALC_WIDTH, CALC_HEIGHT,
         NULL, NULL, hInstance, NULL);
@@ -87,6 +87,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     return msg.wParam;
 }
 
+void AddMenus(HWND hwnd) {
+
+    HMENU hMenubar;
+    HMENU hMenu;
+
+    hMenubar = CreateMenu();
+    hMenu = CreateMenu();
+
+    AppendMenuW(hMenu, MF_STRING, IDM_ABOUT, L"&O Autorze");
+
+    AppendMenuW(hMenubar, MF_POPUP, (UINT_PTR)hMenu, L"&Pomoc");
+    SetMenu(hwnd, hMenubar);
+}
+
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     static HWND hwndStatic;
@@ -99,6 +113,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             WS_VISIBLE | WS_CHILD | SS_RIGHT,
             RESULT_X + ROW_GAP, RESULT_Y, RESULT_WIDTH, RESULT_HEIGHT,
             hwnd, (HMENU)IDC_STATIC_RESULT, GetModuleHandle(NULL), NULL);
+        AddMenus(hwnd);
 
         CreateWindow(
             "BUTTON", "7",
@@ -218,6 +233,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_COMMAND:
         if (HIWORD(wParam) == BN_CLICKED) {
             switch (LOWORD(wParam)) {
+
+            case IDM_ABOUT:
+                MessageBox(hwndStatic, (LPCSTR)"Kamil Rzezniczek", (LPCSTR)"Autorem programu jest:", MB_OK);
             case IDC_BUTTON_ZERO:
                 InsertStringNumber('0', strValue);
                 CalculateOperand();

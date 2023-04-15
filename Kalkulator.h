@@ -3,7 +3,7 @@
 #include "resource.h"
 #define MAX_DIGITS 15
 
-#define CALC_HEIGHT 310
+#define CALC_HEIGHT 340
 #define CALC_WIDTH 300
 
 #define ROW_GAP 10
@@ -45,3 +45,5 @@
 #define DIV 4
 #define LEFT 1
 #define RIGHT 2
+
+#define IDM_ABOUT 1
